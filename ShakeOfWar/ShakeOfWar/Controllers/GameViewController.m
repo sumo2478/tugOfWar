@@ -23,7 +23,6 @@
 @property NSInteger counter;
 @property (nonatomic, strong) NSMutableArray *dataPoints;
 @property long long lastShake, lastUpdate;
-@property (nonatomic, strong) ConnectionHandler *connectionHandler;
 
 @property float last_y;
 
@@ -31,11 +30,13 @@
 
 @implementation GameViewController
 
+@synthesize opponentName;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+
     }
     return self;
 }
@@ -58,6 +59,11 @@
         CMAccelerometerData *accelerationData = [self.motionManager accelerometerData];
         [self didAccelerate:accelerationData.acceleration];
     }];
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [self showAlertWithTitle:@"Connected!" Label:[NSString stringWithFormat:@"%@ has joined the game", self.opponentName] WithDelay:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -155,8 +161,4 @@
     self.lastAcceleration = acceleration;
 }
 
-- (void)startDeviceMotionUpdatesToQueue:(NSOperationQueue *)queue withHandler:(CMDeviceMotionHandler)handler
-{
-
-}
 @end

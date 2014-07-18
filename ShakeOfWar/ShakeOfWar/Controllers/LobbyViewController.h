@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface LobbyViewController : UIViewController
+@interface LobbyViewController : BaseViewController<UITextFieldDelegate>
 
 @property (nonatomic, strong) IBOutlet UITextField *nameTextField;
 

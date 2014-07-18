@@ -7,11 +7,10 @@
 //
 
 #import "LobbyViewController.h"
+#import "GameViewController.h"
 #import "ConnectionHandler.h"
 
 @interface LobbyViewController ()
-
-@property (nonatomic, strong) ConnectionHandler *connectionHandler;
 
 @end
 
@@ -35,6 +34,8 @@
     self.edgesForExtendedLayout = UIRectEdgeNone; 
 
     self.connectionHandler = [[ConnectionHandler alloc] init];
+    [self.connectionHandler setDelegate:self];
+    [self.nameTextField setDelegate:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,6 +47,25 @@
 - (IBAction)joinLobby:(id)sender
 {
     [self.connectionHandler setUpConnectionWithName:nameTextField.text];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return NO;
+}
+
+- (void)handleJoinGame:(NSString *)name
+{
+    GameViewController *gameController = [GameViewController new];
+    gameController.connectionHandler = [self connectionHandler];
+    gameController.opponentName = name;
+    [self presentViewController:gameController animated:YES completion:nil];
+}
+
+- (void)handleWaiting
+{
+    [self showAlertWithTitle:@"Waiting" Label:@"Waiting for opponent..." WithDelay:NO];
+    [self.nameTextField resignFirstResponder];
 }
 
 @end

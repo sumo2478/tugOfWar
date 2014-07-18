@@ -12,4 +12,6 @@
 
 @interface GameViewController : BaseViewController
 
+@property NSString *opponentName;
+
 @end

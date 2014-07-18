@@ -18,6 +18,7 @@
         UILabel *testLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 100, 100, 100)];
         testLabel.text = @"Test string";
         [self addSubview:testLabel];
+        self.backgroundColor = [UIColor whiteColor];
     }
     return self;
 }

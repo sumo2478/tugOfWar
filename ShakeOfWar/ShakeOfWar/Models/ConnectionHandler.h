@@ -7,9 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PKJSONSocket.h"
+
+
+@protocol ConnectionHandlerDelegate <NSObject>
+@optional
+- (void)handleJoinGame:(NSString *)name;
+
+- (void)handleWaiting;
+
+- (void)handleScoreUpdate:(NSInteger) score;
+@end
 
 @interface ConnectionHandler : NSObject <NSStreamDelegate>
+
+@property (weak) id <ConnectionHandlerDelegate> delegate;
 
 - (void)setUpConnectionWithName:(NSString *)name;
 

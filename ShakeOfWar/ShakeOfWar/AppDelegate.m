@@ -21,6 +21,7 @@
     LobbyViewController *lobbyController = [LobbyViewController new];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:lobbyController];
     self.window.rootViewController = navigationController;
+
     return YES;
 }
 
