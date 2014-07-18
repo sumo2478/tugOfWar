@@ -12,8 +12,8 @@
 
 @property double y;
 
-@property long atTimeMilliseconds;
+@property long long atTimeMilliseconds;
 
-- (id) initWithY:(double) y Time:(long)milliSeconds;
+- (id) initWithY:(double) y Time:(long long)milliSeconds;
 
 @end

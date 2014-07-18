@@ -21,7 +21,7 @@
 @property (nonatomic, strong) NSOperationQueue *queue;
 @property NSInteger counter;
 @property (nonatomic, strong) NSMutableArray *dataPoints;
-@property long lastShake, lastUpdate;
+@property long long lastShake, lastUpdate;
 
 @property float last_y;
 
@@ -72,25 +72,24 @@
 }
 
 #define kIgnoreEventAfterShakes 50
-#define kShakeCheckThreshold 50
+#define kShakeCheckThreshold 0.5
 #define kKeepDataPointsFor 500
-#define kPositiveCounterThreshhold 2.0
-#define kNegativeCounterThreshold -2.0
-#define kMinimumEachDirection 2
+#define kPositiveCounterThreshhold 0.5
+#define kNegativeCounterThreshold -0.5
+#define kMinimumEachDirection 0.5
 
 #pragma mark Motion Controls
 
 - (long long) currentTimeInMilliSeconds
 {
-    return [[NSDate date] timeIntervalSince1970] * -1000;
+    long long val =  [[NSDate date] timeIntervalSince1970] * -1000;
+    return val * -1;
 }
 
 - (BOOL) accelerationIsShaking:(CMAcceleration) last Current:(CMAcceleration) current threshhold:(double) threshold {
     long long currTime = [self currentTimeInMilliSeconds];
-    NSLog(@"Time: %lld", currTime);
 
     if (self.lastShake != 0 && (currTime - self.lastShake) < kIgnoreEventAfterShakes) {
-        NSLog(@"Ignored");
 
         return NO;
     }
@@ -115,8 +114,8 @@
 
 - (BOOL) checkForShake
 {
-    long currTime = [self currentTimeInMilliSeconds];
-    long cutOffTime = currTime - kKeepDataPointsFor;
+    long long currTime = [self currentTimeInMilliSeconds];
+    long long cutOffTime = currTime - kKeepDataPointsFor;
 
     DataPoints *latestDP = [self.dataPoints objectAtIndex:0];
     while ([self.dataPoints count] > 0 && latestDP.atTimeMilliseconds < cutOffTime) {

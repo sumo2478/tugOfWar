@@ -10,7 +10,7 @@
 
 @implementation DataPoints
 
-- (id) initWithY:(double) y Time:(long)milliSeconds
+- (id) initWithY:(double) y Time:(long long)milliSeconds
 {
     self = [super init];
     if (self) {
