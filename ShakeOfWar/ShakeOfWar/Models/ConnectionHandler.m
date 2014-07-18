@@ -42,6 +42,16 @@
     [self.outputStream write:[data bytes] maxLength:[data length]];
 }
 
+- (void) closeConnections
+{
+    CFReadStreamRef readStream = (__bridge CFReadStreamRef)(self.inputStream);
+    CFWriteStreamRef outputStream = (__bridge CFWriteStreamRef)(self.outputStream);
+
+
+    CFReadStreamClose(readStream);
+    CFWriteStreamClose(outputStream);
+}
+
 - (void)sendTug
 {
     NSString *response = [NSString stringWithFormat:@"{\"action\":3}"];
@@ -82,7 +92,7 @@
 
 - (void) messageReceived:(NSString *)message {
     NSDictionary *response = [NSJSONSerialization JSONObjectWithData:[message dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-
+    NSLog(@"Response: %@", response);
     switch ([[response objectForKey:@"action"] intValue]) {
         case kResponseJoin:
         {
@@ -101,10 +111,28 @@
         {
             NSLog(@"Score: %d", [[response objectForKey:@"score"] intValue]);
             [self.delegate handleScoreUpdate:[[response objectForKey:@"score"] intValue]];
+            break;
+        }
+        case kResponseDisconnect:
+        {
+            NSLog(@"Disconnected from game server");
+            [self.delegate handleDisconnect];
+            break;
+        }
+        case kResponseWin:
+        {
+            NSLog(@"Won the game");
+            [self.delegate handleEndGameWithWin:YES];
+            break;
+        }
+        case kResponseLose:
+        {
+            NSLog(@"Lost the game");
+            [self.delegate handleEndGameWithWin:NO];
+            break;
         }
         default:
             break;
     }
-
 }
 @end

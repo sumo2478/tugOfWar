@@ -10,4 +10,8 @@
 
 @interface GameView : UIView
 
+@property (nonatomic, strong) UIView *flash;
+
+- (void) showFlash:(NSInteger)score GreenPlayer:(BOOL)greenPlayer;
+
 @end

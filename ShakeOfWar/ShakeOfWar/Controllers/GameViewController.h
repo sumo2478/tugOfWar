@@ -14,4 +14,6 @@
 
 @property NSString *opponentName;
 
+@property BOOL greenPlayer;
+
 @end

@@ -22,4 +22,6 @@
 
 - (void)showAlertWithTitle:(NSString *)title Label:(NSString *)label WithDelay:(BOOL) withDelay;
 
+- (void)hideHUD;
+
 @end

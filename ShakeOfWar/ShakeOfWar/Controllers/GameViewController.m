@@ -12,8 +12,13 @@
 #import "DataPoints.h"
 #import "ConnectionHandler.h"
 #import <CoreMotion/CoreMotion.h>
+#import "LobbyViewController.h"
+#include <AudioToolbox/AudioToolbox.h>
 
 @interface GameViewController ()
+{
+    SystemSoundID tugSound, winSound;
+}
 
 @property (nonatomic, strong) GameView *gameView;
 
@@ -32,6 +37,8 @@
 
 @synthesize opponentName;
 
+@synthesize greenPlayer;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -49,6 +56,12 @@
     [self.view addSubview:self.gameView];
     [self becomeFirstResponder];
 
+    NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"grunt" ofType:@"wav"];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath], &tugSound);
+
+    NSString *winPath = [[NSBundle mainBundle] pathForResource:@"victory" ofType:@"mp3"];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath:winPath], &winSound);
+
     self.dataPoints = [NSMutableArray array];
 
     self.motionManager = [[CMMotionManager alloc] init];
@@ -61,10 +74,6 @@
     }];
 }
 
-- (void) viewDidAppear:(BOOL)animated
-{
-    [self showAlertWithTitle:@"Connected!" Label:[NSString stringWithFormat:@"%@ has joined the game", self.opponentName] WithDelay:YES];
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -155,10 +164,52 @@
             self.counter++;
 
             [self.connectionHandler sendTug];
+            AudioServicesPlaySystemSound(tugSound);
         }
     }
 
     self.lastAcceleration = acceleration;
+}
+
+#pragma mark Delegate Methods
+
+- (void) handleScoreUpdate:(NSInteger)score
+{
+    [self.gameView showFlash:score GreenPlayer:self.greenPlayer];
+    [UIView animateWithDuration:0.25 animations:^{
+        [self.gameView.flash setAlpha:0];
+    }];
+}
+
+- (void) handleConnectionClose
+{
+    [self.motionManager stopAccelerometerUpdates];
+
+    [self.connectionHandler closeConnections];
+}
+
+- (void) handleDisconnect
+{
+    [self handleConnectionClose];
+    [self dismissViewControllerAnimated:YES completion:nil];
+
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You were disconnected" message:nil delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+    [alert show];
+}
+
+- (void) handleEndGameWithWin:(BOOL)win
+{
+    if (win) {
+        AudioServicesPlaySystemSound(winSound);
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You Win!" message:nil delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+        [alert show];
+    }else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You Lose!" message:nil delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+        [alert show];
+    }
+
+    [self handleConnectionClose];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

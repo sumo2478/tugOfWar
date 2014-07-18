@@ -29,6 +29,10 @@
 		972A7A2B1978B5EB008E4910 /* DataPoints.m in Sources */ = {isa = PBXBuildFile; fileRef = 972A7A2A1978B5EB008E4910 /* DataPoints.m */; };
 		972A7A2E1978C486008E4910 /* ConnectionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 972A7A2D1978C486008E4910 /* ConnectionHandler.m */; };
 		972A7A311978C53A008E4910 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 972A7A301978C53A008E4910 /* Constants.m */; };
+		97C3F69F19790E9400BC04B1 /* rope.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 97C3F69E19790E9400BC04B1 /* rope.jpg */; };
+		97C3F6A1197930C100BC04B1 /* grunt.wav in Resources */ = {isa = PBXBuildFile; fileRef = 97C3F6A0197930C100BC04B1 /* grunt.wav */; };
+		97C3F6A31979327F00BC04B1 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97C3F6A21979327F00BC04B1 /* AudioToolbox.framework */; };
+		97C3F6A5197933A900BC04B1 /* victory.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 97C3F6A4197933A900BC04B1 /* victory.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +80,10 @@
 		972A7A2D1978C486008E4910 /* ConnectionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConnectionHandler.m; path = Models/ConnectionHandler.m; sourceTree = "<group>"; };
 		972A7A2F1978C53A008E4910 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		972A7A301978C53A008E4910 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		97C3F69E19790E9400BC04B1 /* rope.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = rope.jpg; path = ../../../../../Desktop/rope.jpg; sourceTree = "<group>"; };
+		97C3F6A0197930C100BC04B1 /* grunt.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = grunt.wav; sourceTree = "<group>"; };
+		97C3F6A21979327F00BC04B1 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		97C3F6A4197933A900BC04B1 /* victory.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = victory.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97C3F6A31979327F00BC04B1 /* AudioToolbox.framework in Frameworks */,
 				972A7A281978A974008E4910 /* CoreMotion.framework in Frameworks */,
 				972A79EF1978A2D0008E4910 /* CoreGraphics.framework in Frameworks */,
 				972A79F11978A2D0008E4910 /* UIKit.framework in Frameworks */,
@@ -127,6 +136,7 @@
 		972A79EB1978A2D0008E4910 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				97C3F6A21979327F00BC04B1 /* AudioToolbox.framework */,
 				972A7A271978A974008E4910 /* CoreMotion.framework */,
 				972A79EC1978A2D0008E4910 /* Foundation.framework */,
 				972A79EE1978A2D0008E4910 /* CoreGraphics.framework */,
@@ -140,6 +150,9 @@
 		972A79F21978A2D0008E4910 /* ShakeOfWar */ = {
 			isa = PBXGroup;
 			children = (
+				97C3F6A4197933A900BC04B1 /* victory.mp3 */,
+				97C3F6A0197930C100BC04B1 /* grunt.wav */,
+				97C3F69D19790B6000BC04B1 /* Images */,
 				972A7A1D1978A4C2008E4910 /* View */,
 				972A7A1C1978A4BD008E4910 /* Model */,
 				972A7A1B1978A4B6008E4910 /* Controller */,
@@ -214,6 +227,14 @@
 				971693501978DF590051BE6B /* LobbyViewController.xib */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		97C3F69D19790B6000BC04B1 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				97C3F69E19790E9400BC04B1 /* rope.jpg */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,8 +318,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				972A79F71978A2D0008E4910 /* InfoPlist.strings in Resources */,
+				97C3F6A1197930C100BC04B1 /* grunt.wav in Resources */,
+				97C3F69F19790E9400BC04B1 /* rope.jpg in Resources */,
 				971693511978DF590051BE6B /* LobbyViewController.xib in Resources */,
 				972A79FF1978A2D0008E4910 /* Images.xcassets in Resources */,
+				97C3F6A5197933A900BC04B1 /* victory.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,6 +12,8 @@
 
 @interface LobbyViewController ()
 
+@property BOOL greenPlayer;
+
 @end
 
 @implementation LobbyViewController
@@ -38,6 +40,11 @@
     [self.nameTextField setDelegate:self];
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    [self.connectionHandler setDelegate:self];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -46,6 +53,7 @@
 
 - (IBAction)joinLobby:(id)sender
 {
+    [self showAlertWithTitle:@"Waiting" Label:@"Waiting for opponent..." WithDelay:NO];
     [self.connectionHandler setUpConnectionWithName:nameTextField.text];
 }
 
@@ -56,15 +64,19 @@
 
 - (void)handleJoinGame:(NSString *)name
 {
-    GameViewController *gameController = [GameViewController new];
+    NSLog(@"Handle Join");
+    [self hideHUD];
+    GameViewController *gameController = [[GameViewController alloc] init];
     gameController.connectionHandler = [self connectionHandler];
+    [gameController.connectionHandler setDelegate:gameController];
     gameController.opponentName = name;
+    gameController.greenPlayer = self.greenPlayer;
     [self presentViewController:gameController animated:YES completion:nil];
 }
 
 - (void)handleWaiting
 {
-    [self showAlertWithTitle:@"Waiting" Label:@"Waiting for opponent..." WithDelay:NO];
+    self.greenPlayer = YES;
     [self.nameTextField resignFirstResponder];
 }
 

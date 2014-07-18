@@ -10,17 +10,27 @@
 
 @implementation GameView
 
+@synthesize flash;
+
 - (id)initWithFrame:(CGRect)frame
 {
-    NSLog(@"Initializing");
     self = [super initWithFrame:frame];
     if (self) {
-        UILabel *testLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 100, 100, 100)];
-        testLabel.text = @"Test string";
-        [self addSubview:testLabel];
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"rope.jpg"]];
+
+        flash = [[UIView alloc] initWithFrame:self.frame];
+        [self addSubview:flash];
     }
     return self;
+}
+
+- (void) showFlash:(NSInteger)score GreenPlayer:(BOOL)greenPlayer {
+    [self.flash setAlpha:1.0];
+    if ((score >= 0 && greenPlayer) || (score <= 0 && !greenPlayer)) {
+        [self.flash setBackgroundColor:[UIColor greenColor]];
+    }else {
+        [self.flash setBackgroundColor:[UIColor redColor]];
+    }
 }
 
 @end

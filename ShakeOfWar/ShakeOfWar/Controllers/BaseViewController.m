@@ -9,6 +9,9 @@
 #import "BaseViewController.h"
 
 @interface BaseViewController ()
+{
+    MBProgressHUD *HUD;
+}
 
 @end
 
@@ -29,6 +32,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    NSLog(@"Allocating");
 
 }
 
@@ -56,7 +61,7 @@
 
 - (void)showAlertWithTitle:(NSString *)title Label:(NSString *)label WithDelay:(BOOL) withDelay
 {
-    MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    NSLog(@"Send");
 	[self.view addSubview:HUD];
 
 	HUD.labelText = title;
@@ -65,9 +70,21 @@
 
     [HUD show:YES];
     if (withDelay) {
-        [HUD hide:YES afterDelay:2.5f];
+        [HUD hide:YES afterDelay:1.0f];
+    }else {
+        HUD.dimBackground = YES;
     }
+}
 
+- (void)showAlertWithTitle:(NSString *)title
+{
+    HUD.labelText = title;
+    [HUD hide:YES afterDelay:1.0f];
+}
+
+- (void)hideHUD
+{
+    [HUD hide:YES];
 }
 
 @end

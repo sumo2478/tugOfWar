@@ -16,6 +16,11 @@
 - (void)handleWaiting;
 
 - (void)handleScoreUpdate:(NSInteger) score;
+
+- (void)handleDisconnect;
+
+- (void)handleEndGameWithWin:(BOOL) win;
+
 @end
 
 @interface ConnectionHandler : NSObject <NSStreamDelegate>
@@ -25,5 +30,7 @@
 - (void)setUpConnectionWithName:(NSString *)name;
 
 - (void)sendTug;
+
+- (void) closeConnections;
 
 @end
