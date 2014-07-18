@@ -9,12 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "PKJSONSocket.h"
 
-@interface ConnectionHandler : NSObject <PKJSONSocketDelegate>
+@interface ConnectionHandler : NSObject <NSStreamDelegate>
 
-@property (nonatomic, strong) PKJSONSocket *socket;
+- (void)setUpConnectionWithName:(NSString *)name;
 
-- (void)setUpConnection;
-
-- (void) sendMessage:(NSDictionary *)dictionary;
+- (void)sendTug;
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "GameViewController.h"
+#import "LobbyViewController.h"
 
 @implementation AppDelegate
 
@@ -18,8 +18,8 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
 
-    GameViewController *gameController = [GameViewController new];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:gameController];
+    LobbyViewController *lobbyController = [LobbyViewController new];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:lobbyController];
     self.window.rootViewController = navigationController;
     return YES;
 }

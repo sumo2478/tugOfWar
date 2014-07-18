@@ -48,9 +48,6 @@
     [self.view addSubview:self.gameView];
     [self becomeFirstResponder];
 
-    self.connectionHandler = [[ConnectionHandler alloc] init];
-    [self.connectionHandler setUpConnection];
-
     self.dataPoints = [NSMutableArray array];
 
     self.motionManager = [[CMMotionManager alloc] init];
@@ -71,7 +68,7 @@
 
 #define kIgnoreEventAfterShakes 50
 #define kShakeCheckThreshold 0.5
-#define kKeepDataPointsFor 200
+#define kKeepDataPointsFor 300
 #define kPositiveCounterThreshhold 1
 #define kNegativeCounterThreshold -1
 #define kMinimumEachDirection 1
@@ -151,8 +148,7 @@
             NSLog(@"Shake Detected: %ld", (long)self.counter);
             self.counter++;
 
-            NSDictionary *tug = @{@"action": @3};
-            [self.connectionHandler sendMessage:tug];
+            [self.connectionHandler sendTug];
         }
     }
 

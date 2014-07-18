@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0CAE94B29710466A8A5E6481 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39F5AD3D7021452E99E364BC /* libPods.a */; };
+		9716934F1978DB7A0051BE6B /* LobbyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9716934E1978DB7A0051BE6B /* LobbyViewController.m */; };
+		971693511978DF590051BE6B /* LobbyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 971693501978DF590051BE6B /* LobbyViewController.xib */; };
 		972A79ED1978A2D0008E4910 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 972A79EC1978A2D0008E4910 /* Foundation.framework */; };
 		972A79EF1978A2D0008E4910 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 972A79EE1978A2D0008E4910 /* CoreGraphics.framework */; };
 		972A79F11978A2D0008E4910 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 972A79F01978A2D0008E4910 /* UIKit.framework */; };
@@ -42,6 +44,9 @@
 /* Begin PBXFileReference section */
 		216F742D2B1E422DA560389F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		39F5AD3D7021452E99E364BC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		9716934D1978DB7A0051BE6B /* LobbyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LobbyViewController.h; path = Controllers/LobbyViewController.h; sourceTree = "<group>"; };
+		9716934E1978DB7A0051BE6B /* LobbyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LobbyViewController.m; path = Controllers/LobbyViewController.m; sourceTree = "<group>"; };
+		971693501978DF590051BE6B /* LobbyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LobbyViewController.xib; path = Views/LobbyViewController.xib; sourceTree = "<group>"; };
 		972A79E91978A2D0008E4910 /* ShakeOfWar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShakeOfWar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		972A79EC1978A2D0008E4910 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		972A79EE1978A2D0008E4910 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -184,6 +189,8 @@
 				972A7A1F1978A4F6008E4910 /* BaseViewController.m */,
 				972A7A211978A50B008E4910 /* GameViewController.h */,
 				972A7A221978A50B008E4910 /* GameViewController.m */,
+				9716934D1978DB7A0051BE6B /* LobbyViewController.h */,
+				9716934E1978DB7A0051BE6B /* LobbyViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -204,6 +211,7 @@
 			children = (
 				972A7A241978A57A008E4910 /* GameView.h */,
 				972A7A251978A57A008E4910 /* GameView.m */,
+				971693501978DF590051BE6B /* LobbyViewController.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -289,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				972A79F71978A2D0008E4910 /* InfoPlist.strings in Resources */,
+				971693511978DF590051BE6B /* LobbyViewController.xib in Resources */,
 				972A79FF1978A2D0008E4910 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -346,6 +355,7 @@
 				972A7A231978A50B008E4910 /* GameViewController.m in Sources */,
 				972A7A311978C53A008E4910 /* Constants.m in Sources */,
 				972A7A261978A57A008E4910 /* GameView.m in Sources */,
+				9716934F1978DB7A0051BE6B /* LobbyViewController.m in Sources */,
 				972A79FD1978A2D0008E4910 /* AppDelegate.m in Sources */,
 				972A7A201978A4F6008E4910 /* BaseViewController.m in Sources */,
 				972A79F91978A2D0008E4910 /* main.m in Sources */,

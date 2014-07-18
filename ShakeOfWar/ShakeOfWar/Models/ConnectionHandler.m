@@ -9,33 +9,52 @@
 #import "ConnectionHandler.h"
 #import "Constants.h"
 
+@interface ConnectionHandler()
+
+@property (nonatomic, strong) NSInputStream *inputStream;
+@property (nonatomic, strong) NSOutputStream *outputStream;
+
+@end
+
 @implementation ConnectionHandler
 
-- (id) init
+//- (id) init
+//{
+//    self = [super init];
+//    if (self) {
+//
+//    }
+//    return self;
+//}
+
+- (void)setUpConnectionWithName:(NSString *)name
 {
-    self = [super init];
-    if (self) {
-        self.socket = [PKJSONSocket socketWithDelegate:self];
-        [self.socket connectToHost:@kServerAddress onPort:kServerPort error:nil];
-        [self.socket listenOnPort:kServerPort error:nil];
-    }
-    return self;
+    CFReadStreamRef readStream;
+    CFWriteStreamRef writeStream;
+
+    CFStreamCreatePairWithSocketToHost(NULL, (CFStringRef)@kServerAddress, 23316, &readStream, &writeStream);
+
+    self.inputStream = (__bridge NSInputStream *)readStream;
+    self.outputStream = (__bridge NSOutputStream *) writeStream;
+
+    [self.inputStream setDelegate:self];
+    [self.outputStream setDelegate:self];
+
+    [self.inputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+    [self.outputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+
+    [self.inputStream open];
+    [self.outputStream open];
+
+    NSString *response = [NSString stringWithFormat:@"{\"action\":1, \"name\":\"%@\"}", name];
+    NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSASCIIStringEncoding]];
+    [self.outputStream write:[data bytes] maxLength:[data length]];
 }
 
-- (void)setUpConnection
+- (void)sendTug
 {
-    NSDictionary *joinRequest = @{@"action": @1, @"name": @"Collin Yen"};
-    [self sendMessage:joinRequest];
-}
-
-- (void)socket:(PKJSONSocket *)socket didReceiveMessage:(PKJSONSocketMessage *)dictionary
-{
-    NSLog(@"Received: %@", [dictionary dictionaryRepresentation]);
-}
-
-- (void) sendMessage:(NSDictionary *)dictionary
-{
-    PKJSONSocketMessage *msg = [PKJSONSocketMessage messageWithDictionary:dictionary];
-    [self.socket send:msg];
+    NSString *response = [NSString stringWithFormat:@"{\"action\":3}"];
+    NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSASCIIStringEncoding]];
+    [self.outputStream write:[data bytes] maxLength:[data length]];
 }
 @end
