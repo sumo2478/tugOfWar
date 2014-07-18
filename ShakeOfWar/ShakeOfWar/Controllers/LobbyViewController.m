@@ -43,6 +43,7 @@
 - (void) viewDidAppear:(BOOL)animated
 {
     [self.connectionHandler setDelegate:self];
+    self.greenPlayer = NO;
 }
 
 - (void)didReceiveMemoryWarning

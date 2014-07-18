@@ -20,26 +20,32 @@
 
 - (void)setUpConnectionWithName:(NSString *)name
 {
-    CFReadStreamRef readStream;
-    CFWriteStreamRef writeStream;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
 
-    CFStreamCreatePairWithSocketToHost(NULL, (CFStringRef)@kServerAddress, 23316, &readStream, &writeStream);
+        CFReadStreamRef readStream;
+        CFWriteStreamRef writeStream;
 
-    self.inputStream = (__bridge NSInputStream *)readStream;
-    self.outputStream = (__bridge NSOutputStream *) writeStream;
+        CFStreamCreatePairWithSocketToHost(NULL, (CFStringRef)@kServerAddress, 23316, &readStream, &writeStream);
 
-    [self.inputStream setDelegate:self];
-    [self.outputStream setDelegate:self];
+        self.inputStream = (__bridge NSInputStream *)readStream;
+        self.outputStream = (__bridge NSOutputStream *) writeStream;
 
-    [self.inputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
-    [self.outputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+        [self.inputStream setDelegate:self];
+        [self.outputStream setDelegate:self];
 
-    [self.inputStream open];
-    [self.outputStream open];
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [self.inputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+            [self.outputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+        });
 
-    NSString *response = [NSString stringWithFormat:@"{\"action\":1, \"name\":\"%@\"}", name];
-    NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSASCIIStringEncoding]];
-    [self.outputStream write:[data bytes] maxLength:[data length]];
+        [self.inputStream open];
+        [self.outputStream open];
+
+
+        NSString *response = [NSString stringWithFormat:@"{\"action\":1, \"name\":\"%@\"}", name];
+        NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSASCIIStringEncoding]];
+        [self.outputStream write:[data bytes] maxLength:[data length]];
+    });
 }
 
 - (void) closeConnections

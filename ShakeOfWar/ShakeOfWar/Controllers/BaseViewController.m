@@ -61,7 +61,6 @@
 
 - (void)showAlertWithTitle:(NSString *)title Label:(NSString *)label WithDelay:(BOOL) withDelay
 {
-    NSLog(@"Send");
 	[self.view addSubview:HUD];
 
 	HUD.labelText = title;
