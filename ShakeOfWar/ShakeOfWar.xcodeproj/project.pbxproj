@@ -22,6 +22,8 @@
 		972A7A201978A4F6008E4910 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 972A7A1F1978A4F6008E4910 /* BaseViewController.m */; };
 		972A7A231978A50B008E4910 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 972A7A221978A50B008E4910 /* GameViewController.m */; };
 		972A7A261978A57A008E4910 /* GameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 972A7A251978A57A008E4910 /* GameView.m */; };
+		972A7A281978A974008E4910 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 972A7A271978A974008E4910 /* CoreMotion.framework */; };
+		972A7A2B1978B5EB008E4910 /* DataPoints.m in Sources */ = {isa = PBXBuildFile; fileRef = 972A7A2A1978B5EB008E4910 /* DataPoints.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,9 @@
 		972A7A221978A50B008E4910 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameViewController.m; path = Controllers/GameViewController.m; sourceTree = "<group>"; };
 		972A7A241978A57A008E4910 /* GameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameView.h; path = Views/GameView.h; sourceTree = "<group>"; };
 		972A7A251978A57A008E4910 /* GameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameView.m; path = Views/GameView.m; sourceTree = "<group>"; };
+		972A7A271978A974008E4910 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		972A7A291978B5EB008E4910 /* DataPoints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataPoints.h; path = Models/DataPoints.h; sourceTree = "<group>"; };
+		972A7A2A1978B5EB008E4910 /* DataPoints.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataPoints.m; path = Models/DataPoints.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				972A7A281978A974008E4910 /* CoreMotion.framework in Frameworks */,
 				972A79EF1978A2D0008E4910 /* CoreGraphics.framework in Frameworks */,
 				972A79F11978A2D0008E4910 /* UIKit.framework in Frameworks */,
 				972A79ED1978A2D0008E4910 /* Foundation.framework in Frameworks */,
@@ -105,6 +111,7 @@
 		972A79EB1978A2D0008E4910 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				972A7A271978A974008E4910 /* CoreMotion.framework */,
 				972A79EC1978A2D0008E4910 /* Foundation.framework */,
 				972A79EE1978A2D0008E4910 /* CoreGraphics.framework */,
 				972A79F01978A2D0008E4910 /* UIKit.framework */,
@@ -170,6 +177,8 @@
 		972A7A1C1978A4BD008E4910 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				972A7A291978B5EB008E4910 /* DataPoints.h */,
+				972A7A2A1978B5EB008E4910 /* DataPoints.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -230,6 +239,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = LinkedIn;
 				TargetAttributes = {
+					972A79E81978A2D0008E4910 = {
+						DevelopmentTeam = QW4YTV2H2T;
+					};
 					972A7A031978A2D0008E4910 = {
 						TestTargetID = 972A79E81978A2D0008E4910;
 					};
@@ -278,6 +290,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				972A7A2B1978B5EB008E4910 /* DataPoints.m in Sources */,
 				972A7A231978A50B008E4910 /* GameViewController.m in Sources */,
 				972A7A261978A57A008E4910 /* GameView.m in Sources */,
 				972A79FD1978A2D0008E4910 /* AppDelegate.m in Sources */,
@@ -399,10 +412,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ShakeOfWar/ShakeOfWar-Prefix.pch";
 				INFOPLIST_FILE = "ShakeOfWar/ShakeOfWar-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -412,10 +428,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ShakeOfWar/ShakeOfWar-Prefix.pch";
 				INFOPLIST_FILE = "ShakeOfWar/ShakeOfWar-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
