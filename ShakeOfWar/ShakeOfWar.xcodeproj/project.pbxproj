@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0CAE94B29710466A8A5E6481 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39F5AD3D7021452E99E364BC /* libPods.a */; };
 		972A79ED1978A2D0008E4910 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 972A79EC1978A2D0008E4910 /* Foundation.framework */; };
 		972A79EF1978A2D0008E4910 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 972A79EE1978A2D0008E4910 /* CoreGraphics.framework */; };
 		972A79F11978A2D0008E4910 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 972A79F01978A2D0008E4910 /* UIKit.framework */; };
@@ -24,6 +25,8 @@
 		972A7A261978A57A008E4910 /* GameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 972A7A251978A57A008E4910 /* GameView.m */; };
 		972A7A281978A974008E4910 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 972A7A271978A974008E4910 /* CoreMotion.framework */; };
 		972A7A2B1978B5EB008E4910 /* DataPoints.m in Sources */ = {isa = PBXBuildFile; fileRef = 972A7A2A1978B5EB008E4910 /* DataPoints.m */; };
+		972A7A2E1978C486008E4910 /* ConnectionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 972A7A2D1978C486008E4910 /* ConnectionHandler.m */; };
+		972A7A311978C53A008E4910 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 972A7A301978C53A008E4910 /* Constants.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		216F742D2B1E422DA560389F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		39F5AD3D7021452E99E364BC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		972A79E91978A2D0008E4910 /* ShakeOfWar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShakeOfWar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		972A79EC1978A2D0008E4910 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		972A79EE1978A2D0008E4910 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -62,6 +67,10 @@
 		972A7A271978A974008E4910 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		972A7A291978B5EB008E4910 /* DataPoints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataPoints.h; path = Models/DataPoints.h; sourceTree = "<group>"; };
 		972A7A2A1978B5EB008E4910 /* DataPoints.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataPoints.m; path = Models/DataPoints.m; sourceTree = "<group>"; };
+		972A7A2C1978C486008E4910 /* ConnectionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConnectionHandler.h; path = Models/ConnectionHandler.h; sourceTree = "<group>"; };
+		972A7A2D1978C486008E4910 /* ConnectionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConnectionHandler.m; path = Models/ConnectionHandler.m; sourceTree = "<group>"; };
+		972A7A2F1978C53A008E4910 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		972A7A301978C53A008E4910 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +82,7 @@
 				972A79EF1978A2D0008E4910 /* CoreGraphics.framework in Frameworks */,
 				972A79F11978A2D0008E4910 /* UIKit.framework in Frameworks */,
 				972A79ED1978A2D0008E4910 /* Foundation.framework in Frameworks */,
+				0CAE94B29710466A8A5E6481 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +106,7 @@
 				972A7A0B1978A2D0008E4910 /* ShakeOfWarTests */,
 				972A79EB1978A2D0008E4910 /* Frameworks */,
 				972A79EA1978A2D0008E4910 /* Products */,
+				216F742D2B1E422DA560389F /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -116,6 +127,7 @@
 				972A79EE1978A2D0008E4910 /* CoreGraphics.framework */,
 				972A79F01978A2D0008E4910 /* UIKit.framework */,
 				972A7A051978A2D0008E4910 /* XCTest.framework */,
+				39F5AD3D7021452E99E364BC /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -130,6 +142,8 @@
 				972A79FC1978A2D0008E4910 /* AppDelegate.m */,
 				972A79FE1978A2D0008E4910 /* Images.xcassets */,
 				972A79F31978A2D0008E4910 /* Supporting Files */,
+				972A7A2F1978C53A008E4910 /* Constants.h */,
+				972A7A301978C53A008E4910 /* Constants.m */,
 			);
 			path = ShakeOfWar;
 			sourceTree = "<group>";
@@ -179,6 +193,8 @@
 			children = (
 				972A7A291978B5EB008E4910 /* DataPoints.h */,
 				972A7A2A1978B5EB008E4910 /* DataPoints.m */,
+				972A7A2C1978C486008E4910 /* ConnectionHandler.h */,
+				972A7A2D1978C486008E4910 /* ConnectionHandler.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -199,9 +215,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 972A7A151978A2D0008E4910 /* Build configuration list for PBXNativeTarget "ShakeOfWar" */;
 			buildPhases = (
+				37E849CEF441433EB3BCF617 /* Check Pods Manifest.lock */,
 				972A79E51978A2D0008E4910 /* Sources */,
 				972A79E61978A2D0008E4910 /* Frameworks */,
 				972A79E71978A2D0008E4910 /* Resources */,
+				3916598E6434489BB8D71D2C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -285,13 +303,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		37E849CEF441433EB3BCF617 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		3916598E6434489BB8D71D2C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		972A79E51978A2D0008E4910 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				972A7A2E1978C486008E4910 /* ConnectionHandler.m in Sources */,
 				972A7A2B1978B5EB008E4910 /* DataPoints.m in Sources */,
 				972A7A231978A50B008E4910 /* GameViewController.m in Sources */,
+				972A7A311978C53A008E4910 /* Constants.m in Sources */,
 				972A7A261978A57A008E4910 /* GameView.m in Sources */,
 				972A79FD1978A2D0008E4910 /* AppDelegate.m in Sources */,
 				972A7A201978A4F6008E4910 /* BaseViewController.m in Sources */,
@@ -409,6 +462,7 @@
 		};
 		972A7A161978A2D0008E4910 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 216F742D2B1E422DA560389F /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -425,6 +479,7 @@
 		};
 		972A7A171978A2D0008E4910 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 216F742D2B1E422DA560389F /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -498,6 +553,7 @@
 				972A7A171978A2D0008E4910 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		972A7A181978A2D0008E4910 /* Build configuration list for PBXNativeTarget "ShakeOfWarTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +562,7 @@
 				972A7A1A1978A2D0008E4910 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

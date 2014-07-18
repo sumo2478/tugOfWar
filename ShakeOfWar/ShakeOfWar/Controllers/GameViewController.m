@@ -10,6 +10,7 @@
 
 #import "GameView.h"
 #import "DataPoints.h"
+#import "ConnectionHandler.h"
 #import <CoreMotion/CoreMotion.h>
 
 @interface GameViewController ()
@@ -22,6 +23,7 @@
 @property NSInteger counter;
 @property (nonatomic, strong) NSMutableArray *dataPoints;
 @property long long lastShake, lastUpdate;
+@property (nonatomic, strong) ConnectionHandler *connectionHandler;
 
 @property float last_y;
 
@@ -46,18 +48,14 @@
     [self.view addSubview:self.gameView];
     [self becomeFirstResponder];
 
+    self.connectionHandler = [[ConnectionHandler alloc] init];
+    [self.connectionHandler setUpConnection];
+
     self.dataPoints = [NSMutableArray array];
 
     self.motionManager = [[CMMotionManager alloc] init];
 
     self.queue = [NSOperationQueue currentQueue];
-
-//    [self.motionManager setAccelerometerUpdateInterval:0.25];
-
-//    [self.motionManager startDeviceMotionUpdatesToQueue:self.queue withHandler:^(CMDeviceMotion *motion, NSError *error) {
-//        CMAccelerometerData *acceleration = [self.motionManager accelerometerData];
-//        [self didAccelerate:acceleration.acceleration];
-//    }];
 
     [self.motionManager startAccelerometerUpdatesToQueue:self.queue withHandler:^(CMAccelerometerData *accelerometerData, NSError *error) {
         CMAccelerometerData *accelerationData = [self.motionManager accelerometerData];
@@ -73,10 +71,10 @@
 
 #define kIgnoreEventAfterShakes 50
 #define kShakeCheckThreshold 0.5
-#define kKeepDataPointsFor 500
-#define kPositiveCounterThreshhold 0.5
-#define kNegativeCounterThreshold -0.5
-#define kMinimumEachDirection 0.5
+#define kKeepDataPointsFor 200
+#define kPositiveCounterThreshhold 1
+#define kNegativeCounterThreshold -1
+#define kMinimumEachDirection 1
 
 #pragma mark Motion Controls
 
@@ -153,6 +151,8 @@
             NSLog(@"Shake Detected: %ld", (long)self.counter);
             self.counter++;
 
+            NSDictionary *tug = @{@"action": @3};
+            [self.connectionHandler sendMessage:tug];
         }
     }
 
